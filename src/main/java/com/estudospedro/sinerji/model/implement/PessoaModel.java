@@ -29,7 +29,7 @@ public class PessoaModel implements DAO<Pessoa> {
 
     @Override
     public Pessoa findById(long id) {
-        return entityManager.find(Pessoa.class, 15L);
+        return entityManager.find(Pessoa.class, id);
     }
 
     @Override
@@ -63,7 +63,6 @@ public class PessoaModel implements DAO<Pessoa> {
         try {
             entityManager.getTransaction().begin();
             Pessoa p = findById(id);
-            System.out.println("delete "+p.toString());
             entityManager.remove(p);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
