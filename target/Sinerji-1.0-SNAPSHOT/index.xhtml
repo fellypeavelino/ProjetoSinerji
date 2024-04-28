@@ -6,23 +6,43 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Listar Pessoas</title>
+    <style>
+    .edit-button {
+        background-color: #4285F4; /* Cor de fundo azul */
+        color: #FFFFFF; /* Cor do texto branco */
+    }
+
+    .delete-button {
+        background-color: #DB4437; /* Cor de fundo vermelha */
+        color: #FFFFFF; /* Cor do texto branco */
+    }
+    </style>
 </h:head>
 <h:body>
     <h3>Lista de Pessoas</h3>
-    <p:button value="Cadastrar Pessoa" outcome="#{pessoaController.redirecionarCadastroPessoa()}" />
-    <p:dataTable var="pessoa" value="#{pessoaController.listaPessoas}">
-        <p:column headerText="ID">
-            <h:outputText value="#{pessoa.id}" />
-        </p:column>
-        <p:column headerText="Nome">
-            <h:outputText value="#{pessoa.nome}" />
-        </p:column>
-        <p:column headerText="Idade">
-            <h:outputText value="#{pessoa.idade}" />
-        </p:column>
-        <p:column headerText="Sexo">
-            <h:outputText value="#{pessoa.sexo}" />
-        </p:column>
-    </p:dataTable>
+    <h:form>
+        <p:commandButton value="Cadastrar Pessoa" action="#{pessoaController.redirecionarCadastroPessoa()}" />
+    </h:form>
+    <h:form id="formGrid">
+        <p:dataTable var="pessoa" value="#{pessoaController.listaPessoas}">
+            <p:column headerText="ID">
+                <h:outputText value="#{pessoa.id}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{pessoa.nome}" />
+            </p:column>
+            <p:column headerText="Idade">
+                <h:outputText value="#{pessoa.idade}" />
+            </p:column>
+            <p:column headerText="Sexo">
+                <h:outputText value="#{pessoa.sexo}" />
+            </p:column>
+            <p:column headerText="Ações">
+                <p:commandButton value="Editar" action="#{pessoaController.editarPessoa(pessoa)}" update=":formGrid" />
+        <!--            <p:button value="Deletar" onclick="if (!confirm('Deseja realmente excluir esta pessoa?')) return false;" 
+                           outcome="#{pessoaController.excluirPessoa(pessoa)}" />-->
+            </p:column>
+        </p:dataTable>
+    </h:form>
 </h:body>
 </html>

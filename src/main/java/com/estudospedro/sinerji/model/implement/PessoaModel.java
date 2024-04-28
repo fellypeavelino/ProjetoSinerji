@@ -28,10 +28,8 @@ public class PessoaModel implements DAO<Pessoa> {
     }
 
     @Override
-    public Pessoa findById(Integer id) {
-        Query query = entityManager.createQuery("from Pessoa where id = :pId");
-        query.setParameter("pId", id);
-        return (Pessoa) query.getSingleResult();
+    public Pessoa findById(long id) {
+        return entityManager.find(Pessoa.class, 15L);
     }
 
     @Override
@@ -61,7 +59,7 @@ public class PessoaModel implements DAO<Pessoa> {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(long id) {
         try {
             entityManager.getTransaction().begin();
             Pessoa p = findById(id);

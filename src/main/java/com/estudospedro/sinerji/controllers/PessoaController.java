@@ -38,17 +38,30 @@ public class PessoaController {
             if (pm.save(p)) {
 		listaPessoas = (pm.findAll());
             }
+            p = new Pessoa();
         } catch (Exception e) {
             e.printStackTrace(); // Tratar o erro de forma adequada conforme necessário
         }
-        return "listarPessoas";
+        return "index.xhtml";
     }
     
     public List<Pessoa> listarPessoas(){
+        p = new Pessoa();
         return listaPessoas = (pm.findAll());
     }
     
     public String redirecionarCadastroPessoa() {
         return "cadastrarPessoa.xhtml?faces-redirect=true";
+    }
+    
+    public String editarPessoa(Pessoa pessoa) {
+        return "cadastroPessoa.xhtml?faces-redirect=true&id=" + pessoa.getId();
+    }
+
+    public String excluirPessoa(Pessoa pessoa) {
+        long valorLong = pessoa.getId();
+        Integer id = (int) valorLong;
+//        pm.delete(pessoa.getId());
+        return "index?faces-redirect=true";
     }
 }
