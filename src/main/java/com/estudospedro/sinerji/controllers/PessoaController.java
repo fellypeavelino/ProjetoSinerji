@@ -51,11 +51,13 @@ public class PessoaController {
     }
     
     public String redirecionarCadastroPessoa() {
+        p = new Pessoa();
         return "cadastrarPessoa.xhtml?faces-redirect=true";
     }
     
     public String editarPessoa(Pessoa pessoa) {
-        return "cadastroPessoa.xhtml?faces-redirect=true&id=" + pessoa.getId();
+        p = pessoa;
+        return "cadastrarPessoa.xhtml?faces-redirect=true";
     }
 
     public String excluirPessoa(Pessoa pessoa) {
