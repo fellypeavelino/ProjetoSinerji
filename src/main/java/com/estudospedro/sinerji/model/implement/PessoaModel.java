@@ -63,10 +63,12 @@ public class PessoaModel implements DAO<Pessoa> {
         try {
             entityManager.getTransaction().begin();
             Pessoa p = findById(id);
+            System.out.println("delete "+p.toString());
             entityManager.remove(p);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
+            e.printStackTrace();
             return false;
         }
         return true;

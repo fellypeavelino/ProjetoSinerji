@@ -61,9 +61,8 @@ public class PessoaController {
     }
 
     public String excluirPessoa(Pessoa pessoa) {
-        long valorLong = pessoa.getId();
-        Integer id = (int) valorLong;
-//        pm.delete(pessoa.getId());
-        return "index?faces-redirect=true";
+        boolean result = pm.delete(pessoa.getId());
+        listaPessoas = (pm.findAll());
+        return "index.xhtml?faces-redirect=true";
     }
 }
