@@ -1,0 +1,6 @@
+com\estudospedro\sinerji\model\implement\PessoaModel.class
+com\estudospedro\sinerji\model\implement\DAO.class
+com\estudospedro\sinerji\Main.class
+com\estudospedro\sinerji\entities\Endereco.class
+com\estudospedro\sinerji\controllers\PessoaController.class
+com\estudospedro\sinerji\entities\Pessoa.class
