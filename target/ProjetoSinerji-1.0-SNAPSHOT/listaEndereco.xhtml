@@ -43,6 +43,10 @@
                 <p:column headerText="Logradouro" sortBy="#{endereco.logradouro}">
                     <h:outputText value="#{endereco.logradouro}" />
                 </p:column>
+                <p:column headerText="Ações">
+                    <p:commandButton value="Editar" action="#{enderecoController.editarEndereco(endereco)}"/>
+                    <p:commandButton value="Deletar" action="#{enderecoController.excluirEndereco(endereco)}"/>
+                </p:column>
                 <!-- Outras colunas conforme necessário -->
             </p:dataTable>
         </h:form> 

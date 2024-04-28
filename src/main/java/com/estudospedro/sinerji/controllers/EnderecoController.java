@@ -32,6 +32,7 @@ public class EnderecoController {
         
     public String listarCadastroEndereco(Pessoa pessoa) {
         p = pessoa;
+        endereco = new Endereco();
         enderecos = enm.findByPessoa(p.getId());
         return "listaEndereco.xhtml?faces-redirect=true";
     }
@@ -42,7 +43,21 @@ public class EnderecoController {
     }
     
     public String salvarEndereco(){
+        endereco.setPessoa(p);
+        enm.save(endereco);
         return listarCadastroEndereco(p);
+    }
+    
+    public String editarEndereco(Endereco endereco){
+        this.endereco = endereco;
+        enderecos = enm.findByPessoa(p.getId());
+        return "listaEndereco.xhtml?faces-redirect=true";
+    }
+    
+    public String excluirEndereco(Endereco endereco){
+        enm.delete(endereco.getId());
+        enderecos = enm.findByPessoa(p.getId());
+        return "listaEndereco.xhtml?faces-redirect=true";
     }
     
     public EnderecoController() {
