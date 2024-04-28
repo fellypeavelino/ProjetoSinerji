@@ -9,6 +9,7 @@
 </h:head>
 <h:body>
     <h3>Lista de Pessoas</h3>
+    <p:button value="Cadastrar Pessoa" outcome="#{pessoaController.redirecionarCadastroPessoa()}" />
     <p:dataTable var="pessoa" value="#{pessoaController.listaPessoas}">
         <p:column headerText="ID">
             <h:outputText value="#{pessoa.id}" />

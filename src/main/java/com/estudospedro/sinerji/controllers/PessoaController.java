@@ -47,4 +47,8 @@ public class PessoaController {
     public List<Pessoa> listarPessoas(){
         return listaPessoas = (pm.findAll());
     }
+    
+    public String redirecionarCadastroPessoa() {
+        return "cadastrarPessoa.xhtml?faces-redirect=true";
+    }
 }
