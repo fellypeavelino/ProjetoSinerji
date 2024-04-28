@@ -23,7 +23,7 @@
     <h:form>
         <p:commandButton value="Cadastrar Pessoa" action="#{pessoaController.redirecionarCadastroPessoa()}" />
     </h:form>
-    <h:form id="formGrid">
+    <h:form>
         <p:dataTable var="pessoa" value="#{pessoaController.listaPessoas}">
             <p:column headerText="ID">
                 <h:outputText value="#{pessoa.id}" />
@@ -38,9 +38,10 @@
                 <h:outputText value="#{pessoa.sexo}" />
             </p:column>
             <p:column headerText="Ações">
-                <p:commandButton value="Editar" action="#{pessoaController.editarPessoa(pessoa)}" update=":formGrid" />
-        <!--            <p:button value="Deletar" onclick="if (!confirm('Deseja realmente excluir esta pessoa?')) return false;" 
-                           outcome="#{pessoaController.excluirPessoa(pessoa)}" />-->
+                
+                    <p:commandButton value="Editar" action="#{pessoaController.editarPessoa(pessoa)}"/>
+                    <p:commandButton value="Deletar" action="#{pessoaController.excluirPessoa(pessoa)}"/>
+                    <p:commandButton value="Endereços" action="#{enderecoController.listarCadastroEndereco(pessoa)}"/>
             </p:column>
         </p:dataTable>
     </h:form>

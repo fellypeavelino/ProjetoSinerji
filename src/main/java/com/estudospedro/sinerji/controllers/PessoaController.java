@@ -51,17 +51,18 @@ public class PessoaController {
     }
     
     public String redirecionarCadastroPessoa() {
+        p = new Pessoa();
         return "cadastrarPessoa.xhtml?faces-redirect=true";
     }
     
     public String editarPessoa(Pessoa pessoa) {
-        return "cadastroPessoa.xhtml?faces-redirect=true&id=" + pessoa.getId();
+        p = pessoa;
+        return "cadastrarPessoa.xhtml?faces-redirect=true";
     }
 
     public String excluirPessoa(Pessoa pessoa) {
-        long valorLong = pessoa.getId();
-        Integer id = (int) valorLong;
-//        pm.delete(pessoa.getId());
-        return "index?faces-redirect=true";
+        boolean result = pm.delete(pessoa.getId());
+        listaPessoas = (pm.findAll());
+        return "index.xhtml?faces-redirect=true";
     }
 }
